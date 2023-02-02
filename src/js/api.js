@@ -28,7 +28,7 @@ async function search( data = lastSearch) {
             const ress = await axios.get(arr, { params }).then((res) => res.data)
             Notify.success(`Hooray! We found ${ress.totalHits} images.`)
             page += 1  
-            infinityCheckBox.checked = !infinityCheckBox.checked
+            infinityCheckBox.checked = false
             return ress}
         
         else {

@@ -1,8 +1,9 @@
-import { search } from "./js/api"
-import { createImgsToHtml } from "./js/gallery"
+
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
+import { search } from "./js/api"
+import { createImgsToHtml } from "./js/gallery"
 
 const form = document.querySelector("form");
 const moreBtn = document.getElementsByClassName("load-controls")[0];
@@ -41,26 +42,27 @@ function sub(e) {
 }
 
 function setInfinityLoad() {
-    intervatToinfinity = setInterval(startInterval, 2000) 
+
+
     if (!infinityCheckBox.checked  ) {
         clearInterval(intervatToinfinity)
-        intervatToinfinity = null;
-        console.log(intervatToinfinity)
-    }  
+
+    } else {
+         intervatToinfinity = setInterval(startInterval, 2000) 
+    }
 }
 function startInterval() {    
-    
+    if (!infinityCheckBox.checked) { clearInterval(intervatToinfinity)
+    }
     const y = window.scrollY;
     if (document.body.scrollHeight <= y + 2000) {
-        // loadMore()
-        console.log(intervatToinfinity)
-        
+        loadMore()      
     }
 };
-function deletInfinityLoad() {
-    intervatToinfinity = null;
-    console.log("stop")
-}
 
 
-
+new SimpleLightbox('.gallery a', {
+    /* options */
+    captionsData: "alt",
+    captionDelay:250,
+});
