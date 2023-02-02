@@ -1,0 +1,44 @@
+.search-form {
+    display: flex;
+    gap: 20px;
+
+}
+
+.search-form__input {
+
+    padding: 10px;
+    border-radius: 20px;
+    background-color: var(--first-color);
+    color: var(--second-color);
+
+    &:focus {
+        outline: solid 2px var(--second-color);
+    }
+
+    &::placeholder {
+        color: var(--second-color);
+    }
+}
+
+.search-form__btn {
+    padding: 10px;
+    border: solid 1px currentColor;
+    border-radius: 20px;
+
+    font-weight: 700;
+    background-color: var(--first-color);
+    color: var(--second-color);
+
+    transition: background-color 400ms linear, color 400ms linear;
+
+    &:hover {
+        color: var(--first-color);
+        border: solid 1px var(--second-color);
+        background-color: var(--second-color);
+    }
+
+    &:active {
+        color: var(--second-color);
+        background: linear-gradient(red 50%, black 50%)
+    }
+}
