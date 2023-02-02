@@ -1,7 +1,6 @@
 
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import SimpleLightbox from "simplelightbox";
-import "simplelightbox/dist/simple-lightbox.min.css";
+
 import { search } from "./js/api"
 import { createImgsToHtml } from "./js/gallery"
 
@@ -61,8 +60,3 @@ function startInterval() {
 };
 
 
-new SimpleLightbox('.gallery a', {
-    /* options */
-    captionsData: "alt",
-    captionDelay:250,
-});
