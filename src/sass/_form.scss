@@ -1,7 +1,12 @@
+.search-bar{
+    position: fixed;
+    width: 100%;
+}
+
 .search-form {
     display: flex;
     gap: 20px;
-
+    
 }
 
 .search-form__input {

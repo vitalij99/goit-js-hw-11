@@ -1,13 +1,19 @@
+
+
+
+
 const gallery = document.getElementsByClassName("gallery")[0]
 
 function createImgsToHtml(data) {
-    console.log(data)
+
     
     const mass = data.reduce((markup, img) => createImg(img) + markup, "")
     gallery.insertAdjacentHTML("beforeend", mass) 
     
 }
-
+function delateHtml() {
+   gallery.innerHTML = ""
+}
 function createImg({webformatURL,largeImageURL,tags,likes ,views ,comments ,downloads }) {
     return `<a class="gallery__item" href="${largeImageURL}">
     <img class="gallery__image" src="${webformatURL}" alt="${tags}" loading="lazy" />
@@ -26,4 +32,4 @@ function createImg({webformatURL,largeImageURL,tags,likes ,views ,comments ,down
           </a>`
         ;
 }
-export {createImgsToHtml}
+export {createImgsToHtml,delateHtml}
