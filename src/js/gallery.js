@@ -1,15 +1,13 @@
-
-
-
-
 const gallery = document.getElementsByClassName("gallery")[0]
-
-function createImgsToHtml(data) {
-
-    
-    const mass = data.reduce((markup, img) => createImg(img) + markup, "")
-    gallery.insertAdjacentHTML("beforeend", mass) 
-    
+ 
+  
+function createImgsToHtml(data) {  
+   
+    const mass = data.hits.reduce((markup, img) => createImg(img) + markup, "")
+    gallery.insertAdjacentHTML("beforeend", mass)   
+    if (gallery.children.length === data.totalHits) {
+      gallery.insertAdjacentHTML("beforeend", "<p>We're sorry, but you've reached the end of search results.</p>")
+    }
 }
 function delateHtml() {
    gallery.innerHTML = ""
