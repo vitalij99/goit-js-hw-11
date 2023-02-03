@@ -9,7 +9,7 @@ const moreBtn = document.getElementsByClassName("load-controls")[0];
 const infinityCheckBox = document.getElementsByClassName('js-allow-infinity')[0];
 let intervatToinfinity = null;
 
-moreBtn.addEventListener("click",loadMore)
+moreBtn.addEventListener("click",loadMoreAndScroll)
 form.addEventListener("submit",sub)
 infinityCheckBox.addEventListener('change', setInfinityLoad);
 
@@ -30,7 +30,13 @@ async function loadMore() {
     createImgsToHtml(response)
 }
 
-
+async function loadMoreAndScroll() {
+   await loadMore()
+    const { height: cardHeight } = document.querySelector(".gallery")
+    .firstElementChild.getBoundingClientRect();
+    
+    window.scrollBy({top: cardHeight * 2, behavior: "smooth",});
+}
 
 function sub(e) {
     
@@ -47,7 +53,7 @@ function setInfinityLoad() {
         clearInterval(intervatToinfinity)
 
     } else {
-         intervatToinfinity = setInterval(startInterval, 2000) 
+         intervatToinfinity = setInterval(startInterval, 1000) 
     }
 }
 function startInterval() {    

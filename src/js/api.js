@@ -26,7 +26,10 @@ async function search( data = lastSearch) {
             const arr = `${URL}?key=${KEY}&q=${data}&page=${page}`
             delateHtml()                 
             const ress = await axios.get(arr, { params }).then((res) => res.data)
-            Notify.success(`Hooray! We found ${ress.totalHits} images.`)
+            if (ress.totalHits !== 0) {
+                Notify.success(`Hooray! We found ${ress.totalHits} images.`)
+            }
+            
             page += 1  
             infinityCheckBox.checked = false
             return ress}

@@ -1,16 +1,19 @@
+.form-warp {
+    margin: 0 auto;
+    width: 350px;
+}
+
 .search-bar{
     position: fixed;
     width: 100%;
 }
 
 .search-form {
-    display: flex;
-    gap: 20px;
     
 }
 
 .search-form__input {
-
+    margin-right: 50px;
     padding: 10px;
     border-radius: 20px;
     background-color: var(--first-color);

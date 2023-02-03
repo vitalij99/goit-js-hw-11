@@ -1,25 +1,36 @@
 
  import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
-let simpleLightBox
+let simpleLightBox = new SimpleLightbox('.gallery a')
 
 const moreBtn = document.getElementsByClassName("load-controls")[0];
 const gallery = document.getElementsByClassName("gallery")[0]  
 
 function createImgsToHtml(data) {  
    
-    const mass = data.hits.reduce((markup, img) => createImg(img) + markup, "")
-    gallery.insertAdjacentHTML("beforeend", mass)   
+  const mass = data.hits.reduce((markup, img) => createImg(img) + markup, "")
+  
+  gallery.insertAdjacentHTML("beforeend", mass) 
+  
     if (gallery.children.length === data.totalHits) {
-      gallery.insertAdjacentHTML("beforeend", "<p>We're sorry, but you've reached the end of search results.</p>")
+      gallery.insertAdjacentHTML("beforeend", "<p class='error-last' >We're sorry, but you've reached the end of search results.</p>")
        if (!moreBtn.classList.contains("ishidden")) moreBtn.classList.add("ishidden")
   }
-  simpleLightBox = new SimpleLightbox('.gallery a').refresh();
+  simpleLightBox = new SimpleLightbox('.gallery a');
+  simpleLightBox.refresh()
+  simpleLightBox.on('closed.simplelightbox', function () {
   
+	simpleLightBox.refresh()
+});
 }
 function delateHtml() {
-   gallery.innerHTML = ""
+  gallery.innerHTML = ""
+  simpleLightBox = new SimpleLightbox('.gallery a').destroy();
 }
+
+
+  
+
 function createImg({webformatURL,largeImageURL,tags,likes ,views ,comments ,downloads }) {
     return `<a class="gallery__item" href="${largeImageURL}">
     <img class="gallery__image" src="${webformatURL}" alt="${tags}" loading="lazy" />
